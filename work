@@ -1,0 +1,49 @@
+import java.util.List;
+
+public class EducationalGroup {
+    private Teacher teacher;
+    private List<Student> students;
+
+    public EducationalGroup(Teacher teacher, List<Student> students) {
+        this.teacher = teacher;
+        this.students = students;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+}
+public class EducationalGroupService {
+    public EducationalGroup createEducationalGroup(Teacher teacher, List<Student> students) {
+        return new EducationalGroup(teacher, students);
+    }
+}
+public class Controller {
+    private EducationalGroupService educationalGroupService;
+
+    public Controller() {
+        educationalGroupService = new EducationalGroupService();
+    }
+
+    public EducationalGroup createEducationalGroup(Teacher teacher, List<Integer> studentIds) {
+        List<Student> students = new ArrayList<>();
+        for (int id : studentIds) {
+            students.add(getStudentById(id));
+        }
+        return educationalGroupService.createEducationalGroup(teacher, students);
+    }
+
+    private Student getStudentById(int id) {
+        // Get the student with the given ID from the database
+        return new Student();
+    }
+
+    private Teacher getTeacherById(int id) {
+        // Get the teacher with the given ID from the database
+        return new Teacher();
+    }
+}
